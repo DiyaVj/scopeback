@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#f5f5f2" />
+  <title>ScopeBack — Find work hiding in the conversation</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="ScopeBack home">
+        <span class="brand-mark"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M6 8.5h14.5a5.5 5.5 0 0 1 0 11H12"/><path d="m16 14-4 5.5 4 5.5"/><path d="M26 23.5H11.5a5.5 5.5 0 0 1 0-11H20"/></svg></span>
+        <span>scopeback<span class="brand-period">.</span></span>
+      </a>
+      <div class="topbar-right">
+        <span id="connection-pill" class="connection-pill checking"><span class="status-dot"></span><span id="connection-text">Checking local AI</span></span>
+        <button id="privacy-button" class="icon-button" title="Privacy details" aria-label="Privacy details"><svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 1 1 8 0v3"/><path d="M12 14v2"/></svg></button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="eyebrow"><span class="eyebrow-line"></span> THE PROJECT SCOPE AUDIT</div>
+        <h1>Find the work hiding<br class="desktop-only" /> in the conversation<span class="headline-dot">.</span></h1>
+        <p>Compare what you agreed to with what your client asked for. Spot possible scope changes, backed by the actual messages — not guesswork.</p>
+        <div class="hero-meta"><span class="mini-icon"><svg viewBox="0 0 24 24"><path d="M12 3 4.5 6v5.5c0 4.2 3 7.7 7.5 9.5 4.5-1.8 7.5-5.3 7.5-9.5V6L12 3Z"/><path d="m9 12 2 2 4-4"/></svg></span> Local-first analysis <span class="meta-divider">·</span> You review every finding</div>
+      </section>
+
+      <section class="workspace-grid">
+        <div class="input-panel panel">
+          <div class="panel-heading"><div><span class="step-number">01</span><h2>Bring the project context</h2></div><span class="panel-step">2 sources</span></div>
+          <div class="source-block">
+            <div class="source-heading"><div class="source-icon quote-icon"><svg viewBox="0 0 24 24"><path d="M7 3.5h7l5 5V20a1 1 0 0 1-1 1H7a2 2 0 0 1-2-2V5.5a2 2 0 0 1 2-2Z"/><path d="M14 3.5V9h5M8 13h8M8 16.5h8"/></svg></div><div><h3>Original scope or quote</h3><p>What was agreed at the start?</p></div></div>
+            <label class="upload-zone" for="quote-file"><input id="quote-file" type="file" accept=".pdf,.txt,.md,.text" /><span class="upload-icon"><svg viewBox="0 0 24 24"><path d="M12 16V4m-4 4 4-4 4 4"/><path d="M5 14v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-5"/></svg></span><span class="upload-copy"><strong id="quote-file-label">Drop a quote here or browse</strong><small>Text PDF, TXT or paste below · max 5 MB</small></span><span class="file-badge">PDF / TXT</span></label>
+            <textarea id="quote-text" rows="7" placeholder="Paste your project quote, statement of work, deliverables, exclusions and revision limits…"></textarea>
+            <div class="field-footer"><span id="quote-count">0 characters</span><span>Text-based PDFs only</span></div>
+          </div>
+
+          <div class="source-separator"><span></span><span class="plus-mark">+</span><span></span></div>
+
+          <div class="source-block">
+            <div class="source-heading"><div class="source-icon chat-icon"><svg viewBox="0 0 24 24"><path d="M20 11.5a7.5 7.5 0 0 1-7.5 7.5H5l1.8-3.2A7.5 7.5 0 1 1 20 11.5Z"/><path d="M8 11.5h.01M12 11.5h.01M16 11.5h.01"/></svg></div><div><h3>Client conversation</h3><p>What changed along the way?</p></div></div>
+            <label class="upload-zone" for="messages-file"><input id="messages-file" type="file" accept=".txt,.md,.text" /><span class="upload-icon"><svg viewBox="0 0 24 24"><path d="M12 16V4m-4 4 4-4 4 4"/><path d="M5 14v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-5"/></svg></span><span class="upload-copy"><strong id="messages-file-label">Add a WhatsApp TXT export</strong><small>Or paste a conversation below</small></span><span class="file-badge">TXT</span></label>
+            <textarea id="messages-text" rows="8" placeholder="Paste a WhatsApp export or transcript. Example:&#10;12/10/26, 10:15 am - Client: Can we add a blog?&#10;12/10/26, 10:16 am - You: That's outside the original quote…"></textarea>
+            <div class="field-footer"><span id="messages-count">0 characters</span><span>Up to 120 messages analyzed</span></div>
+          </div>
+
+          <div class="rate-row"><div><label for="hourly-rate">Your hourly rate <span>(optional)</span></label><p>Only used for estimates you confirm.</p></div><div class="rate-input"><span>₹</span><input id="hourly-rate" type="number" min="0" max="10000000" step="50" value="1500" aria-label="Hourly rate in rupees" /><span class="rate-unit">/ hr</span></div></div>
+          <div id="error-box" class="error-box hidden" role="alert"></div>
+          <button id="analyze-button" class="primary-button"><span class="button-label">Audit this project</span><svg class="button-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></button>
+          <p class="submit-note"><svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 1 1 8 0v3"/></svg> With the default setup, your files stay on this machine and are sent to your local Ollama service.</p>
+          <div class="try-demo-row"><span>Just exploring?</span><button type="button" id="load-demo" class="text-button">Load a sample project <span>↗</span></button><span class="meta-divider">·</span><button type="button" id="sample-report" class="text-button">Preview sample report <span>↗</span></button></div>
+        </div>
+
+        <aside class="side-column">
+          <div class="side-card why-card"><div class="side-card-icon"><svg viewBox="0 0 24 24"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="8"/></svg></div><h3>Scope creep is subtle.</h3><p>A blog added here. Another integration there. A third revision after the second was “final.” The details get buried in the chat.</p><div class="side-rule"></div><div class="why-point"><span class="check-dot">✓</span><span>Compare requests against the original agreement</span></div><div class="why-point"><span class="check-dot">✓</span><span>See the source message behind each finding</span></div><div class="why-point"><span class="check-dot">✓</span><span>Decide what counts — the AI doesn't decide for you</span></div></div>
+          <div class="side-card privacy-card"><div class="privacy-top"><span class="privacy-lock"><svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 1 1 8 0v3"/></svg></span><span class="privacy-label">PRIVATE BY DEFAULT</span></div><h3>Your client data isn't the product.</h3><p>ScopeBack is designed for local inference. No account, no cloud upload and no database in this MVP. Verify your Ollama URL before using sensitive files.</p><button id="privacy-details" type="button" class="text-button">See privacy details <span>↗</span></button></div>
+          <div class="side-card disclaimer-card"><span class="tiny-label">A NOTE ON FINDINGS</span><p>ScopeBack flags <em>potential</em> scope changes. It can't know whether work was completed, separately approved, or already paid for. Check the context before talking to a client.</p></div>
+        </aside>
+      </section>
+
+      <section id="results-section" class="results-section hidden" aria-live="polite">
+        <div class="results-header"><div><div class="eyebrow"><span class="eyebrow-line"></span> PROJECT AUDIT</div><h2>Your review board<span class="headline-dot">.</span></h2><p id="results-subtitle">Potential changes, grounded in the source conversation.</p></div><div class="results-actions"><button id="export-report" class="secondary-button"><svg viewBox="0 0 24 24"><path d="M12 3v12m-4-4 4 4 4-4"/><path d="M5 16v4h14v-4"/></svg> Export report</button><button id="new-audit" class="subtle-button">New audit</button></div></div>
+        <div id="mode-notice" class="mode-notice hidden"></div>
+        <div class="summary-grid"><div class="summary-card"><span class="summary-label">Requests reviewed</span><strong id="total-count">0</strong><span class="summary-hint">From the conversation</span></div><div class="summary-card"><span class="summary-label">Potential scope changes</span><strong id="potential-count">0</strong><span class="summary-hint">Still need your review</span></div><div class="summary-card"><span class="summary-label">Confirmed estimate</span><strong id="value-total">₹0</strong><span class="summary-hint">Only items you confirm</span></div></div>
+        <div class="findings-heading"><div><h3>Findings</h3><p>Review the evidence, then choose a status.</p></div><span class="review-legend"><span class="legend-dot amber"></span> Needs review <span class="legend-dot green"></span> Confirmed extra</span></div>
+        <div id="findings-list" class="findings-list"></div>
+        <div class="scope-summary-grid"><div class="scope-card"><h3><span class="scope-icon">↳</span> What the quote says</h3><ul id="agreed-scope-list"></ul></div><div class="scope-card limitations-card"><h3><span class="scope-icon">!</span> Keep in mind</h3><ul id="limitations-list"></ul></div></div>
+        <div class="bottom-notice"><span class="notice-icon">i</span><p><strong>Before you act:</strong> review your full agreement, later approvals, delivery history and invoices. ScopeBack's output is a starting point for a conversation, not proof that money is owed.</p></div>
+      </section>
+
+      <footer class="footer"><span>scopeback<span class="brand-period">.</span> <span class="footer-muted">A small tool for work that slips through the cracks.</span></span><span class="footer-right">Local-first AI <span class="meta-divider">·</span> Early prototype v0.1</span></footer>
+    </main>
+  </div>
+  <div id="toast" class="toast" role="status"></div>
+  <dialog id="privacy-dialog" class="privacy-dialog"><div class="dialog-heading"><h2>Privacy, without the hand-waving.</h2><button id="close-dialog" class="icon-button" aria-label="Close dialog">×</button></div><p>When ScopeBack uses the default <code>http://127.0.0.1:11434</code> endpoint, document text is sent to Ollama running on this computer for inference. ScopeBack itself does not save uploads or add a database.</p><p>If you change <code>OLLAMA_BASE_URL</code> to a remote server, your prompts and document contents will be sent there. Don't use confidential material unless you control and trust that endpoint.</p><p>Source content may appear in your browser while the page is open. The current MVP doesn't implement account access, encryption at rest, or multi-user isolation because it doesn't persist uploaded files.</p><button id="close-dialog-bottom" class="primary-button dialog-close-button">Got it</button></dialog>
+  <script src="/static/app.js" defer></script>
+</body>
+</html>
