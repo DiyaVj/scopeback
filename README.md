@@ -2,6 +2,8 @@
 
 ScopeBack compares a project quote / statement of work with a client conversation export and highlights **potential** scope changes with source-message evidence. The freelancer makes the final decision about what was completed, approved, included or already billed.
 
+## Demo: https://youtu.be/BQrEaSxW7fM?si=bAZ0jNwI8irKdDIi
+
 ## Current MVP features
 
 - Paste a quote and WhatsApp conversation, or upload a text-based PDF/TXT quote and TXT conversation export.
